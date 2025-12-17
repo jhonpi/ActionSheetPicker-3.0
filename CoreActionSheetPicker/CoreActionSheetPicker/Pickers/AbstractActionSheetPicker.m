@@ -550,6 +550,13 @@ CG_INLINE BOOL isIPhone4() {
     [toolBarItemLabel setTextAlignment:NSTextAlignmentCenter];
     [toolBarItemLabel setBackgroundColor:[UIColor clearColor]];
     toolBarItemLabel.accessibilityTraits = UIAccessibilityTraitHeader;
+    
+    //Define the label using autolayout to avoid overflow issues
+    toolBarItemLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [toolBarItemLabel.heightAnchor constraintEqualToConstant:30].active = YES;
+    //Set compression resistance to allow compression when needed and avoid overflow
+    [toolBarItemLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
+    
 
     CGFloat strikeWidth;
     CGSize textSize;
